@@ -8,6 +8,7 @@ namespace Assignment_1
 {
     class Program
     {
+        //class Driver
         public class Driver
         {
             public int driver_id;
@@ -31,7 +32,7 @@ namespace Assignment_1
             public void updateAvailability(bool status)
             {
                 availability = status;
-                // ask driver to change availabilty status 
+                
             }
 
             public int getRating()
@@ -58,8 +59,6 @@ namespace Assignment_1
 
             public void updateLocation(float latitude, float longitude)
             {
-                // Create a new Location object and set its latitude and longitude properties
-                //cur_location = new Location();
                 cur_location.Latitude = latitude;
                 cur_location.Longitude = longitude;
             }
@@ -75,13 +74,12 @@ namespace Assignment_1
             {
                 Ride book_ride = new Ride();
                 book_ride.assignPassenger();
-                Console.WriteLine("--->" + book_ride.passenger.passenger_name);
+                //Console.WriteLine("--->" + book_ride.passenger.passenger_name);
                 Console.WriteLine("Enter start location :");
                 string input = Console.ReadLine();
 
                 string[] values = input.Split(',');
 
-                //float[] location = new float[values.Length];
 
                 Console.WriteLine("Enter end-location : ");
                 string input2 = Console.ReadLine();
@@ -90,11 +88,11 @@ namespace Assignment_1
 
                 if (end_values.Length == 2 && values.Length == 2)
                 {
-                    // Parse the parts into float values
+                    
                     if (float.TryParse(values[0], out float float1) && float.TryParse(values[1], out float float2) && float.TryParse(end_values[0], out float float3) && float.TryParse(end_values[1], out float float4))
                     {
-                        Console.WriteLine("Float 1: " + float1);
-                        Console.WriteLine("Float 2: " + float2);
+                       // Console.WriteLine("Float 1: " + float1);
+                        //Console.WriteLine("Float 2: " + float2);
                         book_ride.getLocation(float1, float2, float3, float4);
                     }
                     else
@@ -111,7 +109,7 @@ namespace Assignment_1
                 book_ride.vehicle.type = Console.ReadLine();
 
                 book_ride.calculatePrice();
-                Console.WriteLine("-->" + book_ride.price);
+                //Console.WriteLine("-->" + book_ride.price);
 
                 Console.WriteLine("Price for this ride is : " + book_ride.price);
 
@@ -123,14 +121,13 @@ namespace Assignment_1
                 {
                     Console.WriteLine("Happy travel ! ... ");
                     int rating = book_ride.passenger.giveRating();
-                    // book_ride.driver.ratings.Add(rating);
+                    
                 }
             }
 
             public int giveRating()
             {
-                /*Passenger will give rating from 1 to 5 for current ride. No other digit
-acceptable.*/
+                
                 Console.WriteLine("Give ratings : ");
                 return Convert.ToInt32(Console.ReadLine());
 
@@ -138,6 +135,8 @@ acceptable.*/
             }
         }
 
+
+        //class Ride
         public class Ride
         {
             public Location start_location;
@@ -167,8 +166,8 @@ acceptable.*/
             {
                 driver = new Driver();
                 float minimum = 9999;
-                Console.WriteLine("In assign driver function : list count is " + list.Count);
-                Console.WriteLine("In assign driver function : locations are  " + start_location.Latitude);
+                //Console.WriteLine("In assign driver function : list count is " + list.Count);
+                //Console.WriteLine("In assign driver function : locations are  " + start_location.Latitude);
 
                 foreach (Driver d in list)
                 {
@@ -176,6 +175,8 @@ acceptable.*/
                     {
                         float distance = CalculateEuclideanDistance(start_location, d.cur_location);
                         Console.WriteLine("distance in AD func is " + distance);
+                        Console.WriteLine("and driver is " + d.driver_name);
+
 
                         if (distance < minimum)
                         {
@@ -184,7 +185,7 @@ acceptable.*/
                         }
                     }
                 }
-                Console.WriteLine("Driver in AD func : " + driver.driver_name);
+                //Console.WriteLine("Driver in AD func : " + driver.driver_name);
             }
 
             public void getLocation(float startLatitude, float startLongitude, float endLatitude, float endLongitude)
@@ -193,7 +194,7 @@ acceptable.*/
                 start_location.Longitude = startLongitude;
                 end_location.Latitude = endLatitude;
                 end_location.Longitude = endLongitude;
-                // In this function you will set start and end locations of the ride
+                
             }
 
             public float CalculateEuclideanDistance(Location location1, Location location2)
@@ -206,8 +207,8 @@ acceptable.*/
             public void calculatePrice()
             {
                 float distance = CalculateEuclideanDistance(start_location, end_location);
-                Console.WriteLine("In price cal function : locations are  " + this.start_location.Latitude, end_location.Latitude);
-                Console.WriteLine("In price cal function : price are  " + distance);
+                //Console.WriteLine("In price cal function : locations are  " + this.start_location.Latitude, end_location.Latitude);
+                //Console.WriteLine("In price cal function : price are  " + distance);
 
                 if (vehicle.type == "bike")
                 {
@@ -225,12 +226,14 @@ acceptable.*/
             }
         }
 
+        //Class LOcation
         public class Location
         {
             public float Latitude { get; set; }
             public float Longitude { get; set; }
         }
 
+        // class Vehicle
         public class Vehicle
         {
             public string type;
@@ -238,6 +241,7 @@ acceptable.*/
             public string licence_plate { get; set; }
         }
 
+        //class Admin
         public class Admin
         {
             public List<Driver> listOfDriver;
@@ -287,7 +291,7 @@ acceptable.*/
                 driver.availability = true;
 
                 listOfDriver.Add(driver);
-                Console.WriteLine("in add driver function count is " + listOfDriver.Count);
+                //Console.WriteLine("in add driver function count is " + listOfDriver.Count);
             }
 
             public bool updateDriver(string name = null, string ph_no = null, int id = 0)
@@ -408,14 +412,25 @@ acceptable.*/
                     {
                         Console.Write("Hello " + driver.driver_name);
                         Console.WriteLine("Enter your current Location : ");
-                        string input = Console.ReadLine();
+                        string input2 = Console.ReadLine();
 
-                        string[] values = input.Split(',');
+                        string[] end_values = input2.Split(',');
 
-                        float[] location = new float[values.Length];
+                        if (end_values.Length == 2)
+                        {
 
-                        driver.cur_location.Latitude = location[0];
-                        driver.cur_location.Longitude = location[1];
+                            if (float.TryParse(end_values[0], out float float1) && float.TryParse(end_values[1], out float float2))
+                            {
+                                // Console.WriteLine("Float 1: " + float1);
+                                //Console.WriteLine("Float 2: " + float2);
+                                driver.cur_location.Latitude = float1;
+                                driver.cur_location.Longitude=float2;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid location values.");
+                            }
+                        }
 
                         bool exit = false;
                         while (!exit)
@@ -444,15 +459,23 @@ acceptable.*/
                             {
                                 Console.WriteLine("Enter your location : ");
 
-                                string input2 = Console.ReadLine();
+                                string input = Console.ReadLine();
 
-                                string[] values2 = input.Split(',');
+                                string[] end_values2 = input2.Split(',');
 
-                                float[] location2 = new float[values2.Length];
+                                if (end_values2.Length == 2)
+                                {
 
-                                driver.updateLocation(location2[0], location2[1]);
-
-
+                                    if (float.TryParse(end_values2[0], out float float1) && float.TryParse(end_values2[1], out float float2))
+                                    { 
+                                        driver.updateLocation(float1, float2);
+                                        
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Invalid location values.");
+                                    }
+                                }
                             }
                             else
                             {
