@@ -378,6 +378,294 @@ namespace Assignment_1
             return Convert.ToInt32(option);
         }
 
+        //1.String Concatenation
+        static void concatenation()
+        {
+            string firstName, lastName;
+
+            Console.Write("Enter your first name: ");
+            firstName = Console.ReadLine();
+
+            Console.Write("Enter your last name: ");
+            lastName = Console.ReadLine();
+
+            string fullName = firstName+" "+lastName;
+
+            Console.WriteLine("Your full name is: " + fullName);
+
+        }
+
+        //2.Substring fetching
+
+        static void Substring(string input)
+        {
+            string sentence = input;
+
+            if (sentence.Length >= 5)
+            {
+                string lastFiveCharacters = GetLastFiveCharacters(sentence);
+                Console.WriteLine("Last 5 characters: " + lastFiveCharacters);
+            }
+            else
+            {
+                Console.WriteLine("The sentence is too short to extract the last 5 characters.");
+            }
+        }
+
+        static string GetLastFiveCharacters(string input)
+        {
+            
+            if (input.Length >= 5)
+            {
+                return input.Substring(input.Length - 5);
+            }
+            else
+            {
+                return input;
+            }
+        }
+
+        //3.String Interpolation
+        static void StringInterpolation()
+        {
+            double temperature;
+            string city;
+
+            Console.Write("Enter the current temperature (in degrees Celsius): ");
+            string temperatureInput = Console.ReadLine();
+
+        
+            if (double.TryParse(temperatureInput, out temperature))
+            {
+                Console.Write("Enter the name of your city: ");
+                city = Console.ReadLine();
+
+            
+                Console.WriteLine($"The temperature in {city} is {temperature} degrees Celsius.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid temperature input. Please enter a valid number.");
+            }
+        }
+
+
+        //4.Array Declaration and iNITIALIZATION
+        static void ArrayDeclaration()
+        { 
+            int[] numbers = { 1, 2, 3, 4, 5 };
+
+        
+            Console.WriteLine("Elements of the 'numbers' array:");
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                Console.WriteLine(numbers[i]);
+            }
+        }
+
+
+        //5. FOR loop and For each loop
+        static void PrintFruitNames(string[] fruitArray)
+        {
+            Console.WriteLine("Fruit Names:");
+
+        
+            for (int i = 0; i < fruitArray.Length; i++)
+            {
+                Console.WriteLine(fruitArray[i]);
+            }
+        }
+
+
+        static void DisplayColorNamesWithCommas()
+        {
+            string[] colorArray = { "Red", "Blue", "Green", "Yellow", "Orange" };
+            Console.Write("Color Names: ");
+
+        
+            foreach (string color in colorArray)
+            {
+                Console.Write(color + ", ");
+            }
+
+            Console.WriteLine(); 
+        }
+
+        //6. Do while loop , iterating throught est scores
+        static void testscores()
+        {
+            int[] scoreArray = new int[10] { 10, 23, 55, 22, 55, 22, 56, 9, 67, 88 };
+
+
+            int sum = 0;
+            int index = 0;
+
+        
+            do
+            {
+                sum += scoreArray[index];
+                index++;
+            }
+            while (index < scoreArray.Length);
+            Console.WriteLine("Sum of test scores: " + sum);
+        }
+
+
+        //7. Max Value
+        static void MaxValue()
+        {
+            int[] array = { 12, 34, 56, 78, 90, 45, 67, 89, 23, 1 };
+            if (array.Length == 0)
+            {
+                Console.WriteLine("The array is empty.");
+                
+            }else
+            {
+
+                int max = array[0]; 
+                int index = 1; 
+                while (index < array.Length)
+                {
+                    if (array[index] > max)
+                    {
+                        max = array[index];
+                    }
+                    index++;
+                }
+                Console.WriteLine("The maximum value in the array is: " + max);
+            }
+
+
+        }
+
+        //8.Reverse Array
+
+        static void reverse()
+        {
+            int[]array = { 1, 2, 3, 4, 5, 6 };
+            int left = 0;
+            int right = array.Length - 1;
+
+            while (left < right)
+            {
+                // Swap the elements at 'left' and 'right'
+                int temp = array[left];
+                array[left] = array[right];
+                array[right] = temp;
+
+                left++;
+                right--;
+            }
+
+            // Display the reversed array using a foreach loop
+            Console.Write("Reversed Array: ");
+            foreach (int num in array)
+            {
+                Console.Write(num + " ");
+            }
+        
+
+        }
+
+        //9. Boxing
+        //   1.Integer
+
+        static void integerBoxing()
+        {
+        
+            int x = 42;
+            object boxedX = x;
+            int y = (int)boxedX;
+            Console.WriteLine("Value of 'y': " + y);
+        }
+
+        //    2.Double
+
+        static void doubleBoxing()
+        {
+        
+            double doubleValue = 3.14159;
+            object boxedValue = doubleValue;
+            double unboxedValue = (double)boxedValue;
+            Console.WriteLine("Value of 'unboxedValue': " + unboxedValue);
+        }
+
+        //10 Unboxing
+
+        static void aUnboxing()
+        {
+        
+            int[] numbers = { 2, 4, 6, 8, 10 };
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                int originalValue = numbers[i]; 
+
+                object boxedValue = originalValue;
+                int unboxedValue = (int)boxedValue;
+                int squaredValue = unboxedValue * unboxedValue;
+                Console.WriteLine($"Original Integer: {originalValue}, Squared Value: {squaredValue}");
+            }
+        }
+
+        static void bUnboxing()
+        {
+        
+            List<object> mixedList = new List<object>();
+            mixedList.Add(42);          
+            mixedList.Add(3.14159);     
+            mixedList.Add('A');         
+            mixedList.Add("Hello");  
+            Console.WriteLine("Elements in the list:");
+
+            foreach (object item in mixedList)
+            {
+            
+                if (item is int)
+                {
+                    Console.WriteLine($"Integer: {item}, Type: {item.GetType()}");
+                }
+                else if (item is double)
+                {
+                    Console.WriteLine($"Double: {item}, Type: {item.GetType()}");
+                }
+                else if (item is char)
+                {
+                    Console.WriteLine($"Char: {item}, Type: {item.GetType()}");
+                }
+                else if (item is string)
+                {
+                    Console.WriteLine($"String: {item}, Type: {item.GetType()}");
+                }
+            }
+        }
+
+
+        // 11. Dynamic keyword
+        static void dynamicVariable()
+        {
+        
+            dynamic myVariable;
+            myVariable = 42;
+            Console.WriteLine("Integer Value: " + myVariable);
+            myVariable = "Hello, Dynamic!";
+            Console.WriteLine("String Value: " + myVariable);
+        }
+
+        //    gettype()
+        static void dynamicType()
+        {
+            dynamic myVariable2;
+            myVariable2 = 42;
+            Console.WriteLine("Type of myVariable2 (integer): " + myVariable2.GetType());
+            myVariable2 = 3.14;
+            Console.WriteLine("Type of myVariable2 (double): " + myVariable2.GetType());
+            myVariable2 = DateTime.Now;
+            Console.WriteLine("Type of myVariable2 (DateTime): " + myVariable2.GetType());
+            myVariable2 = "Hello, Dynamic!";
+            Console.WriteLine("Type of myVariable2 (string): " + myVariable2.GetType());
+        }
+
+
         static void Main(string[] args)
         {
             Console.WriteLine("****************************************************");
