@@ -1,0 +1,26 @@
+Total Marks: 10
+
+Build Success: 1
+Clean Code: 1
+	Proper Naming Convention: 0.5
+	Proper Indentation: 0.5
+Classes are Designed as per requirements: 2
+CalculatePrice - Business Critical Function: 1
+assignDriver - Service Critical Function: 1
+Input Validations for Location: 1 
+User-interface is managed properly: 1
+Any of Update function is done correctly: 1
+Followed all submission guidelines: 1
+--------------------------------------------------
+Your Score: 6/10
+
+Build Success: 0 (Could not build)
+Clean Code: 1
+Classes are Designed as per requirements: 1.5 (Not all conditions are met)
+CalculatePrice - Business Critical Function: 0.5 (Calculate price is not complete)
+assignDriver - Service Critical Function: 0.5 (Not complete: RideType check is missing)
+Input Validations for Location: 1 (OK)
+User-interface is managed properly: 1 
+Any of Update function is done correctly: 0.5 (Not complete. Cannot Update all parameters) 
+Followed all submission guidelines: 0 (Your Assignment-1 file is in Assignment-2 Branch)
+--------------------------------------------------	
